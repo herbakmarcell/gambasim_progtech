@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="433.0" spacing="20.0" style="-fx-background-color: lightgreen;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.progtechbeadando.HelloController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+   <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="298.0" prefWidth="558.0">
+      <children>
+        <Button id="rouletteBtn" layoutX="361.0" layoutY="173.0" onAction="#onRouletteButtonClick" text="Roulette" />
+      
+        <Label fx:id="welcomeText" layoutX="243.0" layoutY="132.0" prefHeight="17.0" prefWidth="74.0" />
+         <Button id="blackJackBtn" layoutX="132.0" layoutY="173.0" mnemonicParsing="false" onAction="#onBlackJackButtonClick" text="BlackJack" />
+         <Label fx:id="welcomeText1" layoutX="198.0" layoutY="101.0" text="Üdvözlünk az EKKE kaszinóban" />
+      </children>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+   </AnchorPane>
+</VBox>
