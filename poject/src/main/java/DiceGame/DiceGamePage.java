@@ -17,7 +17,7 @@ public class DiceGamePage{
     private JTextField guessField;
     private JLabel diceFaceLabel;
     private JLabel resultLabel;
-    private JTextField monyField;
+    private JTextField moneyField;
     private DiceGameStrategy ds = new DiceGameStrategy(this);
     public static Logger logger = Logger.getLogger("DiceGame logger");
 
@@ -31,6 +31,9 @@ public class DiceGamePage{
 
     public void setDiceFaceLabelIcon(ImageIcon img) {
         this.diceFaceLabel.setIcon(img);
+    }
+    public void setDiceFaceLabelText(String text) {
+        this.diceFaceLabel.setText(text);
     }
 
     public DiceGamePage(){
@@ -63,9 +66,7 @@ public class DiceGamePage{
     }
     private void setupDiceImgLabel(){
         try {
-            BufferedImage Img = ImageIO.read(this.getClass().getResource("Greetings.png"));
-            diceFaceLabel.setText("");
-            diceFaceLabel.setIcon(new ImageIcon(Img));
+            diceFaceLabel.setText("<html><pre>This is our Dice Game\nHave Fun!</pre></html>");
             diceFaceLabel.setSize(150,150);
         } catch (Exception e){
             logger.info("Image not found! Error: " + e.getMessage());

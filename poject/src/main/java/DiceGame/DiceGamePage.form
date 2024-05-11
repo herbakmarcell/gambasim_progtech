@@ -73,7 +73,7 @@
           <text value="Tipp:"/>
         </properties>
       </component>
-      <component id="a8d1a" class="javax.swing.JTextField" binding="monyField">
+      <component id="a8d1a" class="javax.swing.JTextField" binding="moneyField">
         <constraints>
           <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>

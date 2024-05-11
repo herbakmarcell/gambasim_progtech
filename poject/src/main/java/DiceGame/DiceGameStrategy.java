@@ -21,6 +21,7 @@ public class DiceGameStrategy {
             switch (throwNumber+1) {
                 case 1:
                     try {
+                        dp.setDiceFaceLabelText("");
                         BufferedImage Img = ImageIO.read(this.getClass().getResource("1.png"));
                         dp.setDiceFaceLabelIcon(new ImageIcon(Img));
                     } catch (Exception e) {
@@ -34,6 +35,7 @@ public class DiceGameStrategy {
                     break;
                 case 2:
                     try {
+                        dp.setDiceFaceLabelText("");
                         BufferedImage Img = ImageIO.read(this.getClass().getResource("2.png"));
                         dp.setDiceFaceLabelIcon(new ImageIcon(Img));
                     } catch (Exception e) {
@@ -47,6 +49,7 @@ public class DiceGameStrategy {
                     break;
                 case 3:
                     try {
+                        dp.setDiceFaceLabelText("");
                         BufferedImage Img = ImageIO.read(this.getClass().getResource("3.png"));
                         dp.setDiceFaceLabelIcon(new ImageIcon(Img));
                     } catch (Exception e) {
@@ -60,6 +63,7 @@ public class DiceGameStrategy {
                     break;
                 case 4:
                     try {
+                        dp.setDiceFaceLabelText("");
                         BufferedImage Img = ImageIO.read(this.getClass().getResource("4.png"));
                         dp.setDiceFaceLabelIcon(new ImageIcon(Img));
                     } catch (Exception e) {
@@ -73,6 +77,7 @@ public class DiceGameStrategy {
                     break;
                 case 5:
                     try {
+                        dp.setDiceFaceLabelText("");
                         BufferedImage Img = ImageIO.read(this.getClass().getResource("5.png"));
                         dp.setDiceFaceLabelIcon(new ImageIcon(Img));
                     } catch (Exception e) {
@@ -86,6 +91,7 @@ public class DiceGameStrategy {
                     break;
                 case 6:
                     try {
+                        dp.setDiceFaceLabelText("");
                         BufferedImage Img = ImageIO.read(this.getClass().getResource("6.png"));
                         dp.setDiceFaceLabelIcon(new ImageIcon(Img));
                     } catch (Exception e) {
