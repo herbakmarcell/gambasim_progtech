@@ -1,7 +1,8 @@
 package CoinFlip;
 
 import Database.DatabaseConnection;
-import Database.InsertGameLogCommand;
+import Database.InsertActionLogCommand;
+import App.UserData;
 import org.apache.log4j.Logger;
 
 import javax.imageio.ImageIO;
@@ -18,18 +19,24 @@ public class CoinFlipPage {
     private JPanel mainPanel;
     private JLabel resultLabel;
     private JLabel coinImgLabel;
-    private JLabel moneyLabel;
-    private JTextField textField1;
+    private JLabel betLabel;
+    private JTextField betField;
     private JLabel currentPred;
     private JLabel predLabel;
     private JButton switchButton;
+    private JLabel latestFlipsLabel;
+    private JLabel flipDataLabel;
+    private JLabel balanceTextLabel;
+    private JLabel balanceLabel;
     private final String HEAD = "coinFace.png";
     private final String TAIL = "coinNum.png";
+    private boolean betCoinState = false; // Head
 
     public CoinFlipPage(){
         JFrame frame = CreateFrame();
         ConfigureJFrame(frame);
         RegisterListeners();
+        balanceLabel.setText(String.valueOf(UserData.balance));
     }
     private JFrame CreateFrame() {
         logger.info("Created CoinFlip frame");
@@ -43,9 +50,11 @@ public class CoinFlipPage {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         setupCoinImgLabel(HEAD);
+
         logger.info("CoinFlip frame configured");
     }
     private void setupCoinImgLabel(String img){
+        currentPred.setText("Fej");
         try {
             BufferedImage coinImg = ImageIO.read(this.getClass().getResource(img));
             coinImgLabel.setText("");
@@ -63,11 +72,29 @@ public class CoinFlipPage {
                 FlipDaCoin();
             }
         });
-    }
 
+        switchButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                FlipDaLabel();
+                logger.info("Prediction changed to " + (betCoinState ? "Tail" : "Head"));
+            }
+        });
+
+    }
+    private void FlipDaLabel(){
+        betCoinState = !betCoinState;
+        if (betCoinState){
+            currentPred.setText("Írás");
+        } else {
+            currentPred.setText("Fej");
+        }
+    }
     private void FlipDaCoin(){
+
         Random rnd = new Random();
         String result;
+
         int headsOrTails = rnd.nextInt(2);
         if (headsOrTails == 0){
             setupCoinImgLabel(HEAD);
@@ -76,10 +103,12 @@ public class CoinFlipPage {
             setupCoinImgLabel(TAIL);
             result = "T";
         }
-        InsertGameLogCommand logCommand = new InsertGameLogCommand(new DatabaseConnection(
+
+        InsertActionLogCommand logCommand = new InsertActionLogCommand(new DatabaseConnection(
                 "jdbc:mysql://localhost:3306/gambasim",
                 "root",
                 ""),
+                UserData.username,
                 GAME_NAME,
                 "Flip",
                 result
