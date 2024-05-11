@@ -4,11 +4,8 @@ import org.apache.log4j.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.util.Random;
 
 public class DiceGamePage{
     private JFrame frame;
@@ -20,6 +17,8 @@ public class DiceGamePage{
     private JTextField moneyField;
     private JLabel GreetingsLabel;
     private JLabel currentMoney;
+    private JComboBox gameModeComboBox;
+    private GAME_MODE currentMode;
     private DiceGameStrategy ds = new DiceGameStrategy(this);
     private MoneyStrategy ms = new MoneyStrategy(this);
     public static Logger logger = Logger.getLogger("DiceGame logger");
@@ -38,15 +37,27 @@ public class DiceGamePage{
     public void setDiceFaceLabelText(String text) {
         this.diceFaceLabel.setText(text);
     }
-//    public JTextField getMoneyField() {
-//        return moneyField;
-//    }
+
+    public GAME_MODE getCurrentMode() {
+        return currentMode;
+    }
 
     public DiceGamePage(){
         JFrame frame = CreateFrame();
         ConfigureJFrame(frame);
         RegisterListeners();
+        InitializeComboBox();
+        ds.setGameMode((GAME_MODE) gameModeComboBox.getSelectedItem());
     }
+
+    private void InitializeComboBox() {
+        gameModeComboBox.addItem(GAME_MODE.LOWER_EQUAL_THREE);
+        gameModeComboBox.addItem(GAME_MODE.EVEN);
+        gameModeComboBox.addItem(GAME_MODE.UPPER_THAN_THREE);
+        gameModeComboBox.addItem(GAME_MODE.NUMBER);
+        gameModeComboBox.addItemListener(new ItemChangeListener());
+    }
+
     private JFrame CreateFrame() {
         logger.info("Created Dice Game frame");
         return new JFrame();
@@ -66,19 +77,36 @@ public class DiceGamePage{
             @Override
             public void mouseClicked(MouseEvent e) {
                 logger.info("Dice throw button clicked");
-                if(getGuessField().getText().equals("")){
-                    setResultLabelText("Írj be egy számot");
-                    logger.info("The User does not write number in the field");
-                }else{
-                    if (ds.ThrowDice()){
-                        logger.info("Win!");
+                if (currentMode==GAME_MODE.NUMBER){
+                    if(getGuessField().getText().equals(""))
+                    {
+                        setResultLabelText("Írj be egy számot");
+                        logger.info("The User does not write number in the field");
                     }
-                    else{
-                        logger.info("Lose!");
-                    }
+                }
+                if (ds.ThrowDice()){
+                    logger.info("Win!");
+                }
+                else{
+                    logger.info("Lose!");
                 }
             }
         });
+    }
+    class ItemChangeListener implements ItemListener {
+        @Override
+        public void itemStateChanged(ItemEvent event) {
+            if (event.getStateChange() == ItemEvent.SELECTED) {
+                ds.setGameMode((GAME_MODE) event.getItem());
+                currentMode=(GAME_MODE) event.getItem();
+                if (event.getItem() != GAME_MODE.NUMBER) {
+                    guessField.setEnabled(false);
+                }
+                else {
+                    guessField.setEnabled(true);
+                }
+            }
+        }
     }
     private void setupDiceImgLabel(){
         try {

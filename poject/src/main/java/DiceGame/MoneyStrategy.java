@@ -5,13 +5,10 @@ public class MoneyStrategy {
     public MoneyStrategy(DiceGamePage diceGamePage) {
         this.dp = diceGamePage;
     }
+    //private GAME_MODE currentMode=dp.getCurrentMode();
+    public void removeMoney(int amount) {
 
-    public int removeMoney(int currentMoney, int amount) {
-        currentMoney -= amount;
-        return currentMoney;
     }
-    public int addMoney(int currentMoney, int amount) {
-        currentMoney += amount;
-        return currentMoney;
+    public void addMoney(int amount) {
     }
 }
