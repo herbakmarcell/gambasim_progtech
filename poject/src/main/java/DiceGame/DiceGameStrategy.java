@@ -15,7 +15,7 @@ public class DiceGameStrategy {
         Random rnd = new Random();
         int throwNumber=rnd.nextInt(6);
         if(dp.getGuessField().getText().equals("")){
-            dp.setResultLabelText("You need to guess a number");
+            dp.setResultLabelText("Írj be egy számot");
         }
         else {
             switch (throwNumber+1) {
@@ -28,9 +28,9 @@ public class DiceGameStrategy {
                         DiceGamePage.logger.info("Image not found! Error: " + e.getMessage());
                     }
                     if (dp.getGuessField().getText().equals("1")) {
-                        dp.setResultLabelText("You win!");
+                        dp.setResultLabelText("Nyertél!");
                     } else {
-                        dp.setResultLabelText("You lose!");
+                        dp.setResultLabelText("Vesztettél!");
                     }
                     break;
                 case 2:
@@ -42,9 +42,9 @@ public class DiceGameStrategy {
                         DiceGamePage.logger.info("Image not found! Error: " + e.getMessage());
                     }
                     if (dp.getGuessField().getText().equals("2")) {
-                        dp.setResultLabelText("You win!");
+                        dp.setResultLabelText("Nyertél!");
                     } else {
-                        dp.setResultLabelText("You lose!");
+                        dp.setResultLabelText("Vesztettél!");
                     }
                     break;
                 case 3:
@@ -56,9 +56,9 @@ public class DiceGameStrategy {
                         DiceGamePage.logger.info("Image not found! Error: " + e.getMessage());
                     }
                     if (dp.getGuessField().getText().equals("3")) {
-                        dp.setResultLabelText("You win!");
+                        dp.setResultLabelText("Nyertél!");
                     } else {
-                        dp.setResultLabelText("You lose!");
+                        dp.setResultLabelText("Vesztettél!");
                     }
                     break;
                 case 4:
@@ -70,9 +70,9 @@ public class DiceGameStrategy {
                         DiceGamePage.logger.info("Image not found! Error: " + e.getMessage());
                     }
                     if (dp.getGuessField().getText().equals("4")) {
-                        dp.setResultLabelText("You win!");
+                        dp.setResultLabelText("Nyertél!");
                     } else {
-                        dp.setResultLabelText("You lose!");
+                        dp.setResultLabelText("Vesztettél!");
                     }
                     break;
                 case 5:
@@ -84,9 +84,9 @@ public class DiceGameStrategy {
                         DiceGamePage.logger.info("Image not found! Error: " + e.getMessage());
                     }
                     if (dp.getGuessField().getText().equals("5")) {
-                        dp.setResultLabelText("You win!");
+                        dp.setResultLabelText("Nyertél!");
                     } else {
-                        dp.setResultLabelText("You lose!");
+                        dp.setResultLabelText("Vesztettél!");
                     }
                     break;
                 case 6:
@@ -98,9 +98,9 @@ public class DiceGameStrategy {
                         DiceGamePage.logger.info("Image not found! Error: " + e.getMessage());
                     }
                     if (dp.getGuessField().getText().equals("6")) {
-                        dp.setResultLabelText("You win!");
+                        dp.setResultLabelText("Nyertél!");
                     } else {
-                        dp.setResultLabelText("You lose!");
+                        dp.setResultLabelText("Vesztettél!");
                     }
                     break;
             }

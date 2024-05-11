@@ -67,11 +67,12 @@ public class DiceGamePage{
     }
     private void setupDiceImgLabel(){
         try {
-            GreetingsLabel.setText("<html><pre>This is our Dice Game\nHave Fun!</pre></html>");
+            GreetingsLabel.setText("<html><pre>Dobókocka Játék\nJó szórakozást!</pre></html>");
             diceFaceLabel.setText("");
             BufferedImage Img = ImageIO.read(this.getClass().getResource("6.png"));
             diceFaceLabel.setIcon(new ImageIcon(Img));
             diceFaceLabel.setSize(150,150);
+            resultLabel.setText("");
         } catch (Exception e){
             logger.info("Image not found! Error: " + e.getMessage());
         }
