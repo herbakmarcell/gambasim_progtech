@@ -1,5 +1,8 @@
 package DiceGame;
 
+import App.UserData;
+import Database.DatabaseConnection;
+import Database.InsertActionLogCommand;
 import org.apache.log4j.Logger;
 
 import javax.imageio.ImageIO;
@@ -8,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class DiceGameStrategy {
+    public static final String GAME_NAME = "Dice Game";
     private static final Logger log = Logger.getLogger(DiceGameStrategy.class);
     private DiceGamePage dp;
     private GAME_MODE gameMode=GAME_MODE.NUMBER;
@@ -39,9 +43,17 @@ public class DiceGameStrategy {
         }
         if (HasWon(guessNumber,throwNumber)) {
             dp.setResultLabelText("Nyertél!");
+            InsertActionLogCommand logCommand=new InsertActionLogCommand(new DatabaseConnection(
+                    "jdbc:mysql://localhost:3306/gambasim", "root", ""),
+                    UserData.username, GAME_NAME, "Throw", String.valueOf(throwNumber));
+            logCommand.execute();
             return true;
         } else {
             dp.setResultLabelText("Vesztettél!");
+            InsertActionLogCommand logCommand=new InsertActionLogCommand(new DatabaseConnection(
+                    "jdbc:mysql://localhost:3306/gambasim", "root", ""),
+                    UserData.username, GAME_NAME, "Throw", String.valueOf(throwNumber));
+            logCommand.execute();
             return false;
         }
     }
