@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -16,7 +17,21 @@ public class DiceGamePage{
     private JTextField guessField;
     private JLabel diceFaceLabel;
     private JLabel resultLabel;
-    private static Logger logger = Logger.getLogger("DiceGame logger");
+    private JTextField monyField;
+    private DiceGameStrategy ds = new DiceGameStrategy(this);
+    public static Logger logger = Logger.getLogger("DiceGame logger");
+
+    public void setResultLabelText(String text) {
+        resultLabel.setText(text);
+    }
+
+    public JTextField getGuessField() {
+        return guessField;
+    }
+
+    public void setDiceFaceLabelIcon(ImageIcon img) {
+        this.diceFaceLabel.setIcon(img);
+    }
 
     public DiceGamePage(){
         JFrame frame = CreateFrame();
@@ -42,7 +57,7 @@ public class DiceGamePage{
             @Override
             public void mouseClicked(MouseEvent e) {
                 logger.info("Dice throw button clicked");
-                ThrowDice();
+                ds.ThrowDice();
             }
         });
     }
@@ -51,111 +66,11 @@ public class DiceGamePage{
             BufferedImage Img = ImageIO.read(this.getClass().getResource("Greetings.png"));
             diceFaceLabel.setText("");
             diceFaceLabel.setIcon(new ImageIcon(Img));
-            diceFaceLabel.setSize(100,100);
+            diceFaceLabel.setSize(150,150);
         } catch (Exception e){
             logger.info("Image not found! Error: " + e.getMessage());
         }
     }
 
-    private void ThrowDice(){
-        Random rnd = new Random();
-        int throwNumber=rnd.nextInt(6);
-        if(guessField.getText().equals("")){
-            resultLabel.setText("You need to guess a number");
-        }
-        else {
-        switch (throwNumber+1) {
-            case 1:
-                try {
-                    BufferedImage Img = ImageIO.read(this.getClass().getResource("1.png"));
-                    diceFaceLabel.setText("");
-                    diceFaceLabel.setIcon(new ImageIcon(Img));
-                    diceFaceLabel.setSize(150, 150);
-                } catch (Exception e) {
-                    logger.info("Image not found! Error: " + e.getMessage());
-                }
-                if (guessField.getText().equals("1")) {
-                    resultLabel.setText("You win!");
-                } else {
-                    resultLabel.setText("You lose!");
-                }
-                break;
-            case 2:
-                try {
-                    BufferedImage Img = ImageIO.read(this.getClass().getResource("2.png"));
-                    diceFaceLabel.setText("");
-                    diceFaceLabel.setIcon(new ImageIcon(Img));
-                    diceFaceLabel.setSize(150, 150);
-                } catch (Exception e) {
-                    logger.info("Image not found! Error: " + e.getMessage());
-                }
-                if (guessField.getText().equals("2")) {
-                    resultLabel.setText("You win!");
-                } else {
-                    resultLabel.setText("You lose!");
-                }
-                break;
-            case 3:
-                try {
-                    BufferedImage Img = ImageIO.read(this.getClass().getResource("3.png"));
-                    diceFaceLabel.setText("");
-                    diceFaceLabel.setIcon(new ImageIcon(Img));
-                    diceFaceLabel.setSize(150, 150);
-                } catch (Exception e) {
-                    logger.info("Image not found! Error: " + e.getMessage());
-                }
-                if (guessField.getText().equals("3")) {
-                    resultLabel.setText("You win!");
-                } else {
-                    resultLabel.setText("You lose!");
-                }
-                break;
-            case 4:
-                try {
-                    BufferedImage Img = ImageIO.read(this.getClass().getResource("4.png"));
-                    diceFaceLabel.setText("");
-                    diceFaceLabel.setIcon(new ImageIcon(Img));
-                    diceFaceLabel.setSize(150, 150);
-                } catch (Exception e) {
-                    logger.info("Image not found! Error: " + e.getMessage());
-                }
-                if (guessField.getText().equals("4")) {
-                    resultLabel.setText("You win!");
-                } else {
-                    resultLabel.setText("You lose!");
-                }
-                break;
-            case 5:
-                try {
-                    BufferedImage Img = ImageIO.read(this.getClass().getResource("5.png"));
-                    diceFaceLabel.setText("");
-                    diceFaceLabel.setIcon(new ImageIcon(Img));
-                    diceFaceLabel.setSize(150, 150);
-                } catch (Exception e) {
-                    logger.info("Image not found! Error: " + e.getMessage());
-                }
-                if (guessField.getText().equals("5")) {
-                    resultLabel.setText("You win!");
-                } else {
-                    resultLabel.setText("You lose!");
-                }
-                break;
-            case 6:
-                try {
-                    BufferedImage Img = ImageIO.read(this.getClass().getResource("6.png"));
-                    diceFaceLabel.setText("");
-                    diceFaceLabel.setIcon(new ImageIcon(Img));
-                    diceFaceLabel.setSize(150, 150);
-                } catch (Exception e) {
-                    logger.info("Image not found! Error: " + e.getMessage());
-                }
-                if (guessField.getText().equals("6")) {
-                    resultLabel.setText("You win!");
-                } else {
-                    resultLabel.setText("You lose!");
-                }
-                break;
-            }
-        }
-    }
+
 }
