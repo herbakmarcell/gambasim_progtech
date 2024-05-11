@@ -19,7 +19,9 @@ public class DiceGamePage{
     private JLabel resultLabel;
     private JTextField moneyField;
     private JLabel GreetingsLabel;
+    private JLabel currentMoney;
     private DiceGameStrategy ds = new DiceGameStrategy(this);
+    private MoneyStrategy ms = new MoneyStrategy(this);
     public static Logger logger = Logger.getLogger("DiceGame logger");
 
     public void setResultLabelText(String text) {
@@ -36,6 +38,9 @@ public class DiceGamePage{
     public void setDiceFaceLabelText(String text) {
         this.diceFaceLabel.setText(text);
     }
+//    public JTextField getMoneyField() {
+//        return moneyField;
+//    }
 
     public DiceGamePage(){
         JFrame frame = CreateFrame();
@@ -61,7 +66,17 @@ public class DiceGamePage{
             @Override
             public void mouseClicked(MouseEvent e) {
                 logger.info("Dice throw button clicked");
-                ds.ThrowDice();
+                if(getGuessField().getText().equals("")){
+                    setResultLabelText("Írj be egy számot");
+                    logger.info("The User does not write number in the field");
+                }else{
+                    if (ds.ThrowDice()){
+                        logger.info("Win!");
+                    }
+                    else{
+                        logger.info("Lose!");
+                    }
+                }
             }
         });
     }

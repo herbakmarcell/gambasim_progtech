@@ -11,14 +11,10 @@ public class DiceGameStrategy {
         this.dp = diceGamePage;
     }
 
-    public void ThrowDice(){
+    public boolean ThrowDice(){
         Random rnd = new Random();
         int throwNumber=rnd.nextInt(6);
-        if(dp.getGuessField().getText().equals("")){
-            dp.setResultLabelText("Írj be egy számot");
-        }
-        else {
-            switch (throwNumber+1) {
+        switch (throwNumber+1) {
                 case 1:
                     try {
                         dp.setDiceFaceLabelText("");
@@ -26,13 +22,15 @@ public class DiceGameStrategy {
                         dp.setDiceFaceLabelIcon(new ImageIcon(Img));
                     } catch (Exception e) {
                         DiceGamePage.logger.info("Image not found! Error: " + e.getMessage());
+                        return false;
                     }
                     if (dp.getGuessField().getText().equals("1")) {
                         dp.setResultLabelText("Nyertél!");
+                        return true;
                     } else {
                         dp.setResultLabelText("Vesztettél!");
+                        return false;
                     }
-                    break;
                 case 2:
                     try {
                         dp.setDiceFaceLabelText("");
@@ -40,13 +38,15 @@ public class DiceGameStrategy {
                         dp.setDiceFaceLabelIcon(new ImageIcon(Img));
                     } catch (Exception e) {
                         DiceGamePage.logger.info("Image not found! Error: " + e.getMessage());
+                        return false;
                     }
                     if (dp.getGuessField().getText().equals("2")) {
                         dp.setResultLabelText("Nyertél!");
+                        return true;
                     } else {
                         dp.setResultLabelText("Vesztettél!");
+                        return false;
                     }
-                    break;
                 case 3:
                     try {
                         dp.setDiceFaceLabelText("");
@@ -54,13 +54,15 @@ public class DiceGameStrategy {
                         dp.setDiceFaceLabelIcon(new ImageIcon(Img));
                     } catch (Exception e) {
                         DiceGamePage.logger.info("Image not found! Error: " + e.getMessage());
+                        return false;
                     }
                     if (dp.getGuessField().getText().equals("3")) {
                         dp.setResultLabelText("Nyertél!");
+                        return true;
                     } else {
                         dp.setResultLabelText("Vesztettél!");
+                        return false;
                     }
-                    break;
                 case 4:
                     try {
                         dp.setDiceFaceLabelText("");
@@ -68,13 +70,15 @@ public class DiceGameStrategy {
                         dp.setDiceFaceLabelIcon(new ImageIcon(Img));
                     } catch (Exception e) {
                         DiceGamePage.logger.info("Image not found! Error: " + e.getMessage());
+                        return false;
                     }
                     if (dp.getGuessField().getText().equals("4")) {
                         dp.setResultLabelText("Nyertél!");
+                        return true;
                     } else {
                         dp.setResultLabelText("Vesztettél!");
+                        return false;
                     }
-                    break;
                 case 5:
                     try {
                         dp.setDiceFaceLabelText("");
@@ -82,13 +86,15 @@ public class DiceGameStrategy {
                         dp.setDiceFaceLabelIcon(new ImageIcon(Img));
                     } catch (Exception e) {
                         DiceGamePage.logger.info("Image not found! Error: " + e.getMessage());
+                        return false;
                     }
                     if (dp.getGuessField().getText().equals("5")) {
                         dp.setResultLabelText("Nyertél!");
+                        return true;
                     } else {
                         dp.setResultLabelText("Vesztettél!");
+                        return false;
                     }
-                    break;
                 case 6:
                     try {
                         dp.setDiceFaceLabelText("");
@@ -96,14 +102,18 @@ public class DiceGameStrategy {
                         dp.setDiceFaceLabelIcon(new ImageIcon(Img));
                     } catch (Exception e) {
                         DiceGamePage.logger.info("Image not found! Error: " + e.getMessage());
+                        return false;
                     }
                     if (dp.getGuessField().getText().equals("6")) {
                         dp.setResultLabelText("Nyertél!");
+                        return true;
                     } else {
                         dp.setResultLabelText("Vesztettél!");
+                        return false;
                     }
-                    break;
+                default:
+                    return false;
             }
         }
     }
-}
+
