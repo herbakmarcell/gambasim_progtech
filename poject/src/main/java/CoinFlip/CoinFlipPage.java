@@ -1,6 +1,7 @@
 package CoinFlip;
 
 import Database.DatabaseConnection;
+import Database.GetAllUserCoinFlips;
 import Database.InsertActionLogCommand;
 import App.UserData;
 import org.apache.log4j.Logger;
@@ -10,10 +11,15 @@ import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class CoinFlipPage {
     public static final String GAME_NAME = "CoinFlip";
+    private DatabaseConnection db = new DatabaseConnection(
+            "jdbc:mysql://localhost:3306/gambasim",
+            "root",
+            "");
     private static Logger logger = Logger.getLogger(GAME_NAME + " logger");
     private JButton flipButton;
     private JPanel mainPanel;
@@ -50,7 +56,7 @@ public class CoinFlipPage {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         setupCoinImgLabel(HEAD);
-
+        recentFlips();
         logger.info("CoinFlip frame configured");
     }
     private void setupCoinImgLabel(String img){
@@ -70,6 +76,7 @@ public class CoinFlipPage {
             public void mouseClicked(MouseEvent e) {
                 logger.info("Coin flipped");
                 FlipDaCoin();
+                recentFlips();
             }
         });
 
@@ -104,15 +111,24 @@ public class CoinFlipPage {
             result = "T";
         }
 
-        InsertActionLogCommand logCommand = new InsertActionLogCommand(new DatabaseConnection(
-                "jdbc:mysql://localhost:3306/gambasim",
-                "root",
-                ""),
+        InsertActionLogCommand logCommand = new InsertActionLogCommand(this.db,
                 UserData.username,
                 GAME_NAME,
                 "Flip",
                 result
         );
         logCommand.execute();
+    }
+
+    private void recentFlips(){
+        GetAllUserCoinFlips flipsCommand = new GetAllUserCoinFlips(this.db,UserData.username);
+        flipsCommand.execute();
+        ArrayList<String> flips = flipsCommand.getListOfFlips();
+        StringBuilder sb = new StringBuilder();
+        for (int i = flips.size() - 1; i < flips.size(); i--) {
+            if ((flips.size() - 1) - i > 9){ break; }
+            sb.append(flips.get(i) + " ");
+        }
+        flipDataLabel.setText(sb.toString());
     }
 }
