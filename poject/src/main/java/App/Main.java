@@ -3,6 +3,7 @@ package App;
 import CoinFlip.CoinFlipPage;
 import Database.DatabaseConnection;
 import Database.LoginCommand;
+import DiceGame.DiceGamePage;
 import org.apache.log4j.Logger;
 import Start.StartPage;
 
@@ -17,12 +18,13 @@ public class Main {
                         "jdbc:mysql://localhost:3306/gambasim",
                         "root",
                         ""),
-                "QAGSVA",
-                "GoofyAAH"
+                "FX0W53",
+                "Password"
         );
         login.execute();
-        CoinFlipPage form = new CoinFlipPage();
+        //CoinFlipPage form = new CoinFlipPage();
         //StartPage form = new StartPage();
+        DiceGamePage form = new DiceGamePage();
         logger.info("Start page was shown");
     }
 }
