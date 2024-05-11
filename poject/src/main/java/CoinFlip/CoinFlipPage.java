@@ -34,6 +34,7 @@ public class CoinFlipPage {
     private JLabel flipDataLabel;
     private JLabel balanceTextLabel;
     private JLabel balanceLabel;
+    private JLabel statusLabel;
     private final String HEAD = "coinFace.png";
     private final String TAIL = "coinNum.png";
     private boolean betCoinState = false; // Head
@@ -105,9 +106,11 @@ public class CoinFlipPage {
         int headsOrTails = rnd.nextInt(2);
         if (headsOrTails == 0){
             setupCoinImgLabel(HEAD);
+            statusLabel.setText("Fej");
             result = "H";
         } else {
             setupCoinImgLabel(TAIL);
+            statusLabel.setText("Írás");
             result = "T";
         }
 
@@ -123,9 +126,12 @@ public class CoinFlipPage {
     private void recentFlips(){
         GetAllUserCoinFlips flipsCommand = new GetAllUserCoinFlips(this.db,UserData.username);
         flipsCommand.execute();
+
         ArrayList<String> flips = flipsCommand.getListOfFlips();
+        if (flips.isEmpty()) return;
+
         StringBuilder sb = new StringBuilder();
-        for (int i = flips.size() - 1; i < flips.size(); i--) {
+        for (int i = flips.size() - 1; i >= 0; i--) {
             if ((flips.size() - 1) - i > 9){ break; }
             sb.append(flips.get(i) + " ");
         }
