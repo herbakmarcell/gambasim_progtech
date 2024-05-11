@@ -28,12 +28,10 @@ public class LoginCommand implements Command{
 
             if(result != null){
                 logger.info("User named: " + this.username + " logged in successfully");
-                InsertActionLogCommand command = new InsertActionLogCommand(this.databaseConnection,"SYSTEM","LoginAttempt",this.username,"Success");
-                command.execute();
+                LogIntoDatabase("Success");
             } else {
                 logger.info("User named: " + this.username + " tried to login and failed.");
-                InsertActionLogCommand command = new InsertActionLogCommand(this.databaseConnection,"SYSTEM","LoginAttempt",this.username,"Failed");
-                command.execute();
+                LogIntoDatabase("Failed");
                 return;
             }
         }
@@ -51,5 +49,9 @@ public class LoginCommand implements Command{
         } catch (Exception e){
             logger.info("An error has happened while getting the user's data.");
         }
+    }
+    private void LogIntoDatabase(String result){
+        InsertActionLogCommand command = new InsertActionLogCommand(this.databaseConnection,"SYSTEM","Login",this.username,result);
+        command.execute();
     }
 }
