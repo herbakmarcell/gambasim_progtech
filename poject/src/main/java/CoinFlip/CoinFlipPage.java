@@ -4,6 +4,7 @@ import Database.DatabaseConnection;
 import Database.GetAllUserCoinFlips;
 import Database.InsertActionLogCommand;
 import App.UserData;
+import Strategies.MoneyStrategy;
 import org.apache.log4j.Logger;
 
 import javax.imageio.ImageIO;
@@ -21,6 +22,8 @@ public class CoinFlipPage {
             "root",
             "");
     private static Logger logger = Logger.getLogger(GAME_NAME + " logger");
+    private MoneyStrategy ms = new MoneyStrategy();
+    private int betValue;
     private JButton flipButton;
     private JPanel mainPanel;
     private JLabel resultLabel;
@@ -43,7 +46,7 @@ public class CoinFlipPage {
         JFrame frame = CreateFrame();
         ConfigureJFrame(frame);
         RegisterListeners();
-        balanceLabel.setText(String.valueOf(UserData.balance));
+        refreshBalance();
     }
     private JFrame CreateFrame() {
         logger.info("Created CoinFlip frame");
@@ -53,6 +56,7 @@ public class CoinFlipPage {
         frame.setContentPane(this.mainPanel);
         frame.pack();
         frame.setSize(500,500);
+        frame.setTitle("Pénzfeldobó Szimulátor 3000");
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -76,7 +80,7 @@ public class CoinFlipPage {
             @Override
             public void mouseClicked(MouseEvent e) {
                 logger.info("Coin flipped");
-                FlipDaCoin();
+                hasWon(FlipDaCoin());
                 recentFlips();
             }
         });
@@ -90,6 +94,24 @@ public class CoinFlipPage {
         });
 
     }
+    private void hasWon(String result){
+        JFrame frame = new JFrame();
+        try{
+            betValue = Integer.parseInt(betField.getText().toString());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(frame, "Nem megfelelő formátum!", "Hiba", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        String prediction = (betCoinState ? "T" : "H");
+        if (result.equals(prediction)){
+            JOptionPane.showMessageDialog(frame, "Nyereményed: " + betValue, "Nyertél!", JOptionPane.PLAIN_MESSAGE);
+            ms.addMoney(2 * betValue);
+        } else {
+            JOptionPane.showMessageDialog(frame, "Majd legközelebb!", "Vesztettél!", JOptionPane.ERROR_MESSAGE);
+            ms.removeMoney(betValue);
+        }
+        refreshBalance();
+    }
     private void FlipDaLabel(){
         betCoinState = !betCoinState;
         if (betCoinState){
@@ -98,7 +120,7 @@ public class CoinFlipPage {
             currentPred.setText("Fej");
         }
     }
-    private void FlipDaCoin(){
+    private String FlipDaCoin(){
 
         Random rnd = new Random();
         String result;
@@ -121,8 +143,11 @@ public class CoinFlipPage {
                 result
         );
         logCommand.execute();
+        return result;
     }
-
+    private void refreshBalance(){
+        balanceLabel.setText(String.valueOf(UserData.balance));
+    }
     private void recentFlips(){
         GetAllUserCoinFlips flipsCommand = new GetAllUserCoinFlips(this.db,UserData.username);
         flipsCommand.execute();
