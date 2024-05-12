@@ -47,7 +47,7 @@ public class LoginCommand implements Command{
                 UserData.balance = this.result.getInt("balance");
             }
         } catch (Exception e){
-            logger.info("An error has happened while getting the user's data.");
+            logger.error("An error has happened while getting the user's data.");
         }
     }
     private void LogIntoDatabase(String result){

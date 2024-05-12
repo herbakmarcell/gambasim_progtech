@@ -18,13 +18,13 @@ public class Main {
                         "jdbc:mysql://localhost:3306/gambasim",
                         "root",
                         ""),
-                "FX0W53",
-                "Password"
+                "QAGSVA",
+                "GoofyAAH"
         );
         login.execute();
-        //CoinFlipPage form = new CoinFlipPage();
+        CoinFlipPage form = new CoinFlipPage();
         //StartPage form = new StartPage();
-        DiceGamePage form = new DiceGamePage();
+        //DiceGamePage form = new DiceGamePage();
         logger.info("Start page was shown");
     }
 }

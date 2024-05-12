@@ -1,5 +1,6 @@
 package DiceGame;
 
+import Strategies.MoneyStrategy;
 import org.apache.log4j.Logger;
 
 import javax.imageio.ImageIO;
@@ -20,7 +21,7 @@ public class DiceGamePage{
     private JComboBox gameModeComboBox;
     private GAME_MODE currentMode;
     private DiceGameStrategy ds = new DiceGameStrategy(this);
-    private MoneyStrategy ms = new MoneyStrategy(this);
+    private MoneyStrategy ms = new MoneyStrategy();
     public static Logger logger = Logger.getLogger("DiceGame logger");
 
     public void setResultLabelText(String text) {
