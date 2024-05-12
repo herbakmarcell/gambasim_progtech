@@ -82,8 +82,10 @@ public class CoinFlipPage {
         flipButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                logger.info("Coin flipped");
-                hasWon(FlipDaCoin());
+                if (CheckBet()){
+                    hasWon(FlipDaCoin());
+                    logger.info("Coin flipped");
+                }
                 recentFlips();
             }
         });
@@ -109,12 +111,6 @@ public class CoinFlipPage {
     }
     private void hasWon(String result){
         JFrame frame = new JFrame();
-        try{
-            betValue = Integer.parseInt(betField.getText().toString());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(frame, "Nem megfelelő formátum!", "Hiba", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
         String prediction = (betCoinState ? "T" : "H");
         if (result.equals(prediction)){
             JOptionPane.showMessageDialog(frame, "Nyereményed: " + betValue, "Nyertél!", JOptionPane.PLAIN_MESSAGE);
@@ -124,6 +120,19 @@ public class CoinFlipPage {
             ms.removeMoney(betValue);
         }
         refreshBalance();
+    }
+    private boolean CheckBet(){
+        try{
+            betValue = Integer.parseInt(betField.getText().toString());
+            if (betValue <= 0) {
+                JOptionPane.showMessageDialog(frame, "Nem lehet negatív tét!", "Hiba", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+            return true;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(frame, "Nem megfelelő formátum!", "Hiba", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
     private void FlipDaLabel(){
         betCoinState = !betCoinState;
