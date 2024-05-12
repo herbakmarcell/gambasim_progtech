@@ -75,6 +75,8 @@ Az alkalmazás célja egy változatos és szórakoztató szerencsejáték szimul
 
 ## 9. Adatbázis terv
 
+![dbterv](https://github.com/herbakmarcell/gambasim_progtech/assets/128597041/139356a1-df93-4e2a-9172-66dbd2bd8f31)
+
 ## 10. Implementációs terv
 
 ## 11. Tesztterv
