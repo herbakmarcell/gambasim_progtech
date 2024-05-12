@@ -4,27 +4,32 @@ Az alkalmazás célja egy változatos és szórakoztató szerencsejáték szimul
 ## 2. Projektterv
 
 ### 2.1 Projektszerepkörök, felelőségek:
-   * Scrum masters:
-   * Product owner: 
-   * Üzleti szereplő:
+  * Üzleti szereplő:
+	  -   Megrendelő:
+		  -  Troll Ede
      
 ### 2.2 Projektmunkások és felelőségek:
-   * Frontend:
-   * Backend:
+   * Frontend és backend:
+     - Bodnár Máté
+     - Herbák Marcell
    * Tesztelés:
+     - Bodnár Máté
+     - Herbák Marcell
      
 ### 2.3 Ütemterv:
 
 |Funkció                  | Feladat                                | Prioritás | Becslés (nap) | Aktuális becslés (nap) | Eltelt idő (nap) | Becsült idő (nap) |
 |-------------------------|----------------------------------------|-----------|---------------|------------------------|------------------|---------------------|
 |Rendszerterv             |Megírás                                 |         1 |             1 |                      1 |                1 |                   1 |
-|Program                  |Képernyőtervek elkészítése              |         2 |             1 |                      1 |                1 |                   1 |
-|Program                  |Prototípus elkészítése                  |         3 |             8 |                      8 |                8 |                   8 |
-|Program                  |Alapfunkciók elkészítése                |         3 |             8 |                      8 |                8 |                   8 |
-|Program                  |Tesztelés                               |         4 |             2 |                      2 |                2 |                   2 |
+|Program                  |Prototípus elkészítése                  |         2 |             3 |                      3 |                2 |                   1 |
+|Program                  |Tesztelés                               |         3 |             1 |                      1 |                1 |                   1 |
 
 ### 2.4 Mérföldkövek:
-   * Prototípus átadása
+   *   05.10. Projekt elkezdése
+   *   05.11. Alap prototípus elkészítése
+   *   05.12. Végleges prototípus elkészítése
+   *   05.12. Tesztelés
+   *   05.13. Bemutatás és átadás
 
 ## 3. Üzleti folyamatok modellje
 
