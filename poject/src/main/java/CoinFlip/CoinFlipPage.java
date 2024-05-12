@@ -120,7 +120,7 @@ public class CoinFlipPage {
             currentPred.setText("Fej");
         }
     }
-    private String FlipDaCoin(){
+    public String FlipDaCoin(){
 
         Random rnd = new Random();
         String result;
