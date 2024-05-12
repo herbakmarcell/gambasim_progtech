@@ -10,7 +10,7 @@ public class RegisterCommand implements Command{
     private static Logger logger = Logger.getLogger("Register logger");
     private static JFrame frame = new JFrame();
     private DatabaseConnection databaseConnection;
-    private ResultSet result;
+    public ResultSet result;
     private String username;
     private String password;
 
