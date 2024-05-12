@@ -66,19 +66,19 @@ public class DiceGameStrategy {
 
     public boolean HasWon(int guess, int result){
         switch (gameMode) {
-            case GAME_MODE.NUMBER:
+            case NUMBER:
                 multiplier=6;
                 return guess==result;
-            case GAME_MODE.EVEN:
+            case EVEN:
                 multiplier=1.5;
                 return result%2==0;
-            case GAME_MODE.LOWER_EQUAL_THREE:
+            case LOWER_EQUAL_THREE:
                 multiplier=1.5;
                 return result<=3;
-            case GAME_MODE.UPPER_THAN_THREE:
+            case UPPER_THAN_THREE:
                 multiplier=1.5;
                 return result>3;
-            case GAME_MODE.ODD:
+            case ODD:
                 multiplier=1.5;
                 return result%2==1;
             default:
