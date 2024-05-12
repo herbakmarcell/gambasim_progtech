@@ -13,18 +13,7 @@ import java.io.IOException;
 public class Main {
     private static Logger logger = Logger.getLogger("App.Main logger");
     public static void main(String[] args){
-        LoginCommand login = new LoginCommand(
-                new DatabaseConnection(
-                        "jdbc:mysql://localhost:3306/gambasim",
-                        "root",
-                        ""),
-                "QAGSVA",
-                "GoofyAAH"
-        );
-        login.execute();
-        CoinFlipPage form = new CoinFlipPage();
-        //StartPage form = new StartPage();
-        //DiceGamePage form = new DiceGamePage();
+        StartPage form = new StartPage();
         logger.info("Start page was shown");
     }
 }

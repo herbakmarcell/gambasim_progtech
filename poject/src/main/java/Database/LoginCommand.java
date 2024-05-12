@@ -26,11 +26,13 @@ public class LoginCommand implements Command{
             String query = "SELECT * FROM users WHERE username = " + "'" + this.username + "'" + " AND password = " + "'" + this.password + "'";
             this.result = this.databaseConnection.getDbConnection().createStatement().executeQuery(query);
 
-            if(result != null){
-                logger.info("User named: " + this.username + " logged in successfully");
+            if(result.isBeforeFirst()){
+                logger.info("User named: " + this.username + " logged in successfully!");
+                JOptionPane.showMessageDialog(frame, "Üdvözöljük szerencsejáték alkalmazásunkban!", "Sikeres bejelentkezés", JOptionPane.INFORMATION_MESSAGE);
                 LogIntoDatabase("Success");
             } else {
-                logger.info("User named: " + this.username + " tried to login and failed.");
+                logger.info("User named: " + this.username + " tried to login and failed!");
+                JOptionPane.showMessageDialog(frame, "Hibás felhasználónév vagy jelszó", "Sikertelen bejelentkezés", JOptionPane.ERROR_MESSAGE);
                 LogIntoDatabase("Failed");
                 return;
             }
