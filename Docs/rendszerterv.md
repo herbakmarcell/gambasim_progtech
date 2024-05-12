@@ -51,8 +51,15 @@ Az alkalmazás célja egy változatos és szórakoztató szerencsejáték szimul
 ## 5. Funkcionális terv
 
 ### 5.1 Rendszerszereplők
+ - Felhasználó
+   - Tétet tehet meg, és játszhat a játékmódokkal
+ - "Gép"
+   - Sorsolja az eredményeket
 
 ### 5.2 Menühierarchiák
+- Főoldal (Bejelentkezés és Regisztráció)
+- Pénzfeldobó játék
+- Dobókocka játék
 
 ## 6. Fizikai környezet
 
