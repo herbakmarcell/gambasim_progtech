@@ -1,5 +1,6 @@
 package DiceGame;
 
+import App.UserData;
 import Strategies.MoneyStrategy;
 import org.apache.log4j.Logger;
 
@@ -17,8 +18,8 @@ public class DiceGamePage{
     private JLabel resultLabel;
     private JTextField moneyField;
     private JLabel GreetingsLabel;
-    private JLabel currentMoney;
     private JComboBox gameModeComboBox;
+    private JLabel balanceLabel;
     private GAME_MODE currentMode;
     private DiceGameStrategy ds = new DiceGameStrategy(this);
     private MoneyStrategy ms = new MoneyStrategy();
@@ -39,8 +40,12 @@ public class DiceGamePage{
         this.diceFaceLabel.setText(text);
     }
 
-    public GAME_MODE getCurrentMode() {
-        return currentMode;
+    public int getMoneyField() {
+        return Integer.parseInt(moneyField.getText());
+    }
+
+    private void refreshBalance(){
+        balanceLabel.setText(String.valueOf(UserData.balance));
     }
 
     public DiceGamePage(){
@@ -48,13 +53,15 @@ public class DiceGamePage{
         ConfigureJFrame(frame);
         RegisterListeners();
         InitializeComboBox();
+        refreshBalance();
         ds.setGameMode((GAME_MODE) gameModeComboBox.getSelectedItem());
     }
 
     private void InitializeComboBox() {
         gameModeComboBox.addItem(GAME_MODE.LOWER_EQUAL_THREE);
-        gameModeComboBox.addItem(GAME_MODE.EVEN);
         gameModeComboBox.addItem(GAME_MODE.UPPER_THAN_THREE);
+        gameModeComboBox.addItem(GAME_MODE.EVEN);
+        gameModeComboBox.addItem(GAME_MODE.ODD);
         gameModeComboBox.addItem(GAME_MODE.NUMBER);
         gameModeComboBox.addItemListener(new ItemChangeListener());
     }
@@ -87,9 +94,11 @@ public class DiceGamePage{
                 }
                 if (ds.ThrowDice()){
                     logger.info("Win!");
+                    refreshBalance();
                 }
                 else{
                     logger.info("Lose!");
+                    refreshBalance();
                 }
             }
         });
