@@ -4,6 +4,7 @@ import Database.DatabaseConnection;
 import Database.GetAllUserCoinFlips;
 import Database.InsertActionLogCommand;
 import App.UserData;
+import SelectGame.SelectGamePage;
 import Strategies.MoneyStrategy;
 import org.apache.log4j.Logger;
 
@@ -38,12 +39,14 @@ public class CoinFlipPage {
     private JLabel balanceTextLabel;
     private JLabel balanceLabel;
     private JLabel statusLabel;
+    private JButton backBtn;
     private final String HEAD = "coinFace.png";
     private final String TAIL = "coinNum.png";
-    private boolean betCoinState = false; // Head
+    private boolean betCoinState = false;
+    private JFrame frame;
 
     public CoinFlipPage(){
-        JFrame frame = CreateFrame();
+        frame = CreateFrame();
         ConfigureJFrame(frame);
         RegisterListeners();
         refreshBalance();
@@ -92,6 +95,16 @@ public class CoinFlipPage {
                 logger.info("Prediction changed to " + (betCoinState ? "Tail" : "Head"));
             }
         });
+        backBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                logger.info("Back button clicked");
+                SelectGamePage selectGamePage = new SelectGamePage();
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
+
 
     }
     private void hasWon(String result){

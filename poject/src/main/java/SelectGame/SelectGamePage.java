@@ -29,8 +29,8 @@ public class SelectGamePage {
         frame.setVisible(true);
         frame.pack();
         frame.setResizable(false);
-        frame.setTitle("Select Game");
-        frame.setSize(650,500);
+        frame.setTitle("Gamba Szimulátor - Játék választó");
+        frame.setSize(400,400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public void RegisterListeners(){

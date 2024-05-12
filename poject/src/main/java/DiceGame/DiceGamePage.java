@@ -1,6 +1,7 @@
 package DiceGame;
 
 import App.UserData;
+import SelectGame.SelectGamePage;
 import Strategies.MoneyStrategy;
 import org.apache.log4j.Logger;
 
@@ -20,6 +21,7 @@ public class DiceGamePage{
     private JLabel GreetingsLabel;
     private JComboBox gameModeComboBox;
     private JLabel balanceLabel;
+    private JButton backBtn;
     private GAME_MODE currentMode;
     private DiceGameStrategy ds = new DiceGameStrategy(this);
     private MoneyStrategy ms = new MoneyStrategy();
@@ -49,7 +51,7 @@ public class DiceGamePage{
     }
 
     public DiceGamePage(){
-        JFrame frame = CreateFrame();
+        frame = CreateFrame();
         ConfigureJFrame(frame);
         RegisterListeners();
         InitializeComboBox();
@@ -77,6 +79,7 @@ public class DiceGamePage{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setResizable(false);
+        frame.setTitle("Dobókockás pénzelvevő");
         setupDiceImgLabel();
         logger.info("Dice Game frame configured");
     }
@@ -102,6 +105,16 @@ public class DiceGamePage{
                 }
             }
         });
+        backBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                logger.info("Back button clicked");
+                SelectGamePage selectGamePage = new SelectGamePage();
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
+
     }
     class ItemChangeListener implements ItemListener {
         @Override
