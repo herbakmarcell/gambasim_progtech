@@ -110,9 +110,16 @@ Szerver (Host) gép: Az adatbázis rendszer és a háttérfolyamatokat ellátó 
 
 ### Webszerver
 
+-XAMPP.
+
 ### Adatbázis rendszer
 
+- MySQL alapú adatbázis rendszer.
+
 ### A program elérése, kezelése
+
+- Szükséges Swing, XAMPP, ami az installáció esetén egy szervergép.
+
 
 ## 9. Adatbázis terv
 
