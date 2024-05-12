@@ -29,8 +29,26 @@ Az alkalmazás célja egy változatos és szórakoztató szerencsejáték szimul
 ## 3. Üzleti folyamatok modellje
 
 ### 3.1 Üzleti szereplők
+Az alkalmazás regisztráció vagy bejelentkezés után válik elérhetővé, bárki tud regiszrálni. Minden felhasználó ugyanolyan jogkörrel rendelkezik.
 
 ### 3.2 Üzleti folyamatok
+Az alkalmazás indulását követően a felhasználónak be kell jelentkeznie a funkciók eléréséhez.
+- Általános folyamatok:
+     - Regisztrálni az oldalra a megfelelő adatok magadásával.
+     - Bejelentkezni az oldalra a regisztráció során megadott megfelelő adatokkal.
+     - Bármikor kilépni az alkalmazásból.
+     - Játék kiválasztása.
+- Pénzfeldobó játék folyamatok:
+	- Tét megtétele.
+	- Tipp módosítása.
+	- Legutóbbi dobások megtekintése.
+	- Tipp elfogadása és részvétel a "sorsolásban".
+- Kockadobó játék folyamatok:
+  - Tét megtétele.
+  - Páros/Páratlan számok tippelése.
+  - Kisebb, egyenlő mint 3 vagy nagyobb mint 3 számok tippelése.
+  - Pontos szám tippelése.
+  - Tipp elfogadása és részvétel a "sorsolásban".
 
 ## 4. Követelmények
 
