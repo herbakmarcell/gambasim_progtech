@@ -94,7 +94,7 @@ public class DiceGamePage{
                     refreshBalance();
                 }
                 else{
-                    logger.info("Lose!");
+                    logger.info("Lose or something happened!");
                     refreshBalance();
                 }
             }
@@ -110,8 +110,6 @@ public class DiceGamePage{
         });
 
     }
-
-
     class ItemChangeListener implements ItemListener {
         @Override
         public void itemStateChanged(ItemEvent event) {

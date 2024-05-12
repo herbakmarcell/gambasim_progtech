@@ -29,13 +29,17 @@ public class DiceGameStrategy {
     }
 
     public boolean ThrowDice(){
-        Random rnd = new Random();
-        int throwNumber=rnd.nextInt(6)+1;
+        if (!CheckBet()) { return false; }
         int guessNumber=0;
         if (gameMode==GAME_MODE.NUMBER)
         {
+            if (!CheckNum()) { return false; }
             guessNumber = Integer.parseInt(dp.getGuessField().getText());
         }
+        Random rnd = new Random();
+        int throwNumber=rnd.nextInt(6)+1;
+
+
         String resultPicture=throwNumber+".png";
         try {
             dp.setDiceFaceLabelText("");
@@ -60,6 +64,35 @@ public class DiceGameStrategy {
                     "jdbc:mysql://localhost:3306/gambasim", "root", ""),
                     UserData.username, GAME_NAME, "Throw", String.valueOf(throwNumber));
             logCommand.execute();
+            return false;
+        }
+    }
+
+    private boolean CheckNum(){
+        JFrame frame = new JFrame();
+        try{
+            int value = Integer.parseInt(dp.getGuessField().getText());
+            if (value <= 1 || value > 6) {
+                JOptionPane.showMessageDialog(frame, "Nem megfelelő tét!", "Hiba", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+            return true;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(frame, "Nem megfelelő formátum!", "Hiba", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+    private boolean CheckBet(){
+        JFrame frame = new JFrame();
+        try{
+            int betValue = dp.getMoneyField();
+            if (betValue <= 0) {
+                JOptionPane.showMessageDialog(frame, "Nem lehet negatív tét!", "Hiba", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+            return true;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(frame, "Nem megfelelő formátum!", "Hiba", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
