@@ -82,24 +82,20 @@ Az alkalmazás célja egy változatos és szórakoztató szerencsejáték szimul
 A tesztelések célja a rendszer és komponensei funkcionalitásának teljes vizsgálata,
 ellenőrzése a rendszer által megvalósított üzleti szolgáltatások verifikálása.
 A teszteléseket a fejlesztői csapat minden tagja elvégzi.
-Egy teszt eredményeit a tagok dokumentálják külön fájlokba.
+Egy teszt eredményeit a tagok dokumentálják külön unit teszt függvényekbe és metódusokba tárolja.
+
+A tesztelés során a szoftver megfelelő működését vizsgáljuk. Amennyiben az elvártnak megfelelő eredményt kapunk, a teszt eset sikeresnek tekinthető, ellenkező esetben a hibát megpróbáljuk elhárítani, ha a teszt nem direkt nem sikerül.
 
 ### Tesztesetek
 
- | Teszteset | Elvárt eredmény | 
- |-----------|-----------------| 
- | ... | ... |
+#### Tesztelés módja: Unit Teszt
 
-### A tesztelési jegyzőkönyv kitöltésére egy sablon:
-
-**Tesztelő:** Vezetéknév Keresztnév
-
-**Tesztelés dátuma:** Év.Hónap.Nap
-
-Tesztszám | Rövid leírás | Várt eredmény | Eredmény | Megjegyzés
-----------|--------------|---------------|----------|-----------
-például. Teszt #01 | Regisztráció | A felhasználó az adatok megadásával sikeresen regisztrálni tud  | A felhasználó sikeresen regisztrált | Nem találtam problémát.
-... | ... | ... | ... | ...
+ | Teszteset      | Elvárt eredmény                                                                                            | 
+ |----------------|------------------------------------------------------------------------------------------------------------| 
+ | Regisztráció   | A felhasználó az adatok megadásával sikeresen regisztrálni tud.                                            |
+ | Bejelentkezés  | A felhasználó az adatok megadásával sikeresen be tud jelentkezni.                                          |
+ | Tét megtétele  | Ha a felhasználó megfelelő mennyiségű egyenleggel rendelkezik, meg tudja tenni tétjét a megfelelő játékra. |
+ | Játék indítása | A játék elindul, és az eredmény és felhasználó tippje alapján közli az eredményt.                          |
 
 ## 12. Telepítési terv
 
