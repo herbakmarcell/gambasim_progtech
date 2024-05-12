@@ -1,5 +1,7 @@
 package DiceGame;
 
+import App.UserData;
+import SelectGame.SelectGamePage;
 import Strategies.MoneyStrategy;
 import org.apache.log4j.Logger;
 
@@ -17,8 +19,9 @@ public class DiceGamePage{
     private JLabel resultLabel;
     private JTextField moneyField;
     private JLabel GreetingsLabel;
-    private JLabel currentMoney;
     private JComboBox gameModeComboBox;
+    private JLabel balanceLabel;
+    private JButton backBtn;
     private GAME_MODE currentMode;
     private DiceGameStrategy ds = new DiceGameStrategy(this);
     private MoneyStrategy ms = new MoneyStrategy();
@@ -39,22 +42,28 @@ public class DiceGamePage{
         this.diceFaceLabel.setText(text);
     }
 
-    public GAME_MODE getCurrentMode() {
-        return currentMode;
+    public int getMoneyField() {
+        return Integer.parseInt(moneyField.getText());
+    }
+
+    private void refreshBalance(){
+        balanceLabel.setText(String.valueOf(UserData.balance));
     }
 
     public DiceGamePage(){
-        JFrame frame = CreateFrame();
+        frame = CreateFrame();
         ConfigureJFrame(frame);
         RegisterListeners();
         InitializeComboBox();
+        refreshBalance();
         ds.setGameMode((GAME_MODE) gameModeComboBox.getSelectedItem());
     }
 
     private void InitializeComboBox() {
         gameModeComboBox.addItem(GAME_MODE.LOWER_EQUAL_THREE);
-        gameModeComboBox.addItem(GAME_MODE.EVEN);
         gameModeComboBox.addItem(GAME_MODE.UPPER_THAN_THREE);
+        gameModeComboBox.addItem(GAME_MODE.EVEN);
+        gameModeComboBox.addItem(GAME_MODE.ODD);
         gameModeComboBox.addItem(GAME_MODE.NUMBER);
         gameModeComboBox.addItemListener(new ItemChangeListener());
     }
@@ -70,6 +79,7 @@ public class DiceGamePage{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setResizable(false);
+        frame.setTitle("Dobókockás pénzelvevő");
         setupDiceImgLabel();
         logger.info("Dice Game frame configured");
     }
@@ -87,12 +97,24 @@ public class DiceGamePage{
                 }
                 if (ds.ThrowDice()){
                     logger.info("Win!");
+                    refreshBalance();
                 }
                 else{
                     logger.info("Lose!");
+                    refreshBalance();
                 }
             }
         });
+        backBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                logger.info("Back button clicked");
+                SelectGamePage selectGamePage = new SelectGamePage();
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
+
     }
     class ItemChangeListener implements ItemListener {
         @Override

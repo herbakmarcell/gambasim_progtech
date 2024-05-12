@@ -4,6 +4,7 @@ import App.UserData;
 import Database.DatabaseConnection;
 import Database.LoginCommand;
 import Database.RegisterCommand;
+import DiceGame.DiceGamePage;
 import SelectGame.SelectGamePage;
 import org.apache.log4j.Logger;
 
