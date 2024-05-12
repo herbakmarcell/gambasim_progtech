@@ -46,9 +46,10 @@ Az alkalmazás célja egy változatos és szórakoztató szerencsejáték szimul
  
 ### Nemfunkcionális követelmények
 
-| ID | Megnevezés                             | Leírás                                                                                              |
-|----|----------------------------------------|-----------------------------------------------------------------------------------------------------|
-| K6 | Átlátható, könnyen kezelhető felület   | A felületek könnyen használhatóak, átláthatóak legyenek, intuitívak, illetve ne legyenek zsúfoltak. |
+| ID | Megnevezés                             | Leírás                                                                                                              |
+|----|----------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| K6 | Átlátható, könnyen kezelhető felület   | A felületek könnyen használhatóak, átláthatóak legyenek, intuitívak, illetve ne legyenek zsúfoltak.                 |
+| K7 | Tervezési minták használata            | Az alkalmazás forráskódja tartalmazzon legalább 2 tervezési mintát. Mi esetünkben ez a Stratégia és a Command lesz. |
 
 ### Támogatott eszközök
 
