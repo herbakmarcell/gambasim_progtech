@@ -142,8 +142,19 @@ A tesztelés során a szoftver megfelelő működését vizsgáljuk. Amennyiben 
 
 ## 12. Telepítési terv
 
-Fizikai telepítési terv: 
+**Fizikai telepítési terv**:
+ - A felhasználónak szüksége van egy működő számítógépre, amely rendelkezik internet hozzáféréssel.
+ - A szoftverünk működéséhez szükség van egy szerverre. A szervernek kapcsolódni kell egy hálózathoz, hogy elérhető legyen.
 
-Szoftver telepítési terv: 
+**Szoftver telepítési terv**:
+ - A felhasználónak szüksége van egy Windows 10 vagy 11 operációs rendszerre, amely támogatja a Java alkalmazásokat.
+ - A szoftverünk futtatható Windows szerveren.
+ - Szükség van valamilyen adatbázis szerverre, például MySQL:
+   - Szükséges telepíteni az XAMPP nevű szoftvert.
+   - Az adatbázis konfigurálása az XAMPP segítségével történik.
+ - A backend és frontend konfigurálásához szükség van az  IntelliJ fejlesztői környezetre.
+   -  Szükséges csomagok a Java.
+ - A fejlesztők számára az alkalmazás szabadon konfigurálható, fejleszthető.
+ - Abban az esetben, ha a szükséges beállítások megtörténtek, a felhasználók számára az alkalmazás futtatható
 
 ## 13. Karbantartási terv
