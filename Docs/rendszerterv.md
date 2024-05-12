@@ -119,7 +119,11 @@ Szerver (Host) gép: Az adatbázis rendszer és a háttérfolyamatokat ellátó 
 ![dbterv](https://github.com/herbakmarcell/gambasim_progtech/assets/128597041/139356a1-df93-4e2a-9172-66dbd2bd8f31)
 
 ## 10. Implementációs terv
-
+A projektet két részre oszlik: a frontendre és a backendre. A frontend Java Swing segítségével készül, míg a backend Java keretrendszerben.
+A program kódjában használt nyelv elsősorban az angol.
+A szerver és az adatbázist összekötő csomag  felelős az adatbázis kezeléséért.
+Mind a frontend, mind a backend fejlesztéséhez szükség van a IntelliJ környezet telepítésére és konfigurálására a szükséges eszközökkel és kiegészítőkkel
+együtt.
 ## 11. Tesztterv
 
 A tesztelések célja a rendszer és komponensei funkcionalitásának teljes vizsgálata,
