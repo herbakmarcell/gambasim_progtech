@@ -36,17 +36,24 @@ Az alkalmazás célja egy változatos és szórakoztató szerencsejáték szimul
 
 ### Funkcionális követelmények
 
-| ID | Megnevezés | Leírás |
-| --- | --- | --- |
-| K1 | ... | ... |
-
+| ID | Megnevezés               | Leírás                                                                                                                                                                                   |
+|----|--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| K1 | Bejelentkezési ablak     | A felhasználónak egyes funkciók elérése előtt azonosítania kell magát, mielőtt elérhetné azokat.                                                                                         |
+| K2 | Regisztráció             | A felhasználó itt tudja regisztrálni magát.                                                                                                                                              |
+| K3 | Játékmód választás       | A fehasználó kiválaszthatja, mely játékmódot szeretné játszani.                                                                                                                          |
+| K4 | Pénzfeldobó játék        | A pénzfeldobó játékban a felhasználó megteheti tétjét, hogy a szimulált pénzérme a feje vagy írása mutat felfelé, és az alapján kapja vissza megtett tétjét, amelyet tud módosítani is.  |
+| K5 | Kockadobó játék          | A kockadobó játékban a felhasználó megteheti tétjét, hogy a szimulált dobókocka különböző tulajdonságaira, és az alapján kapja vissza megtett tétjét, amelyet tud módosítani is.         |
+ 
 ### Nemfunkcionális követelmények
 
-| ID | Megnevezés | Leírás |
-| --- | --- | --- |
-| K4 | ... | ... |
+| ID | Megnevezés                             | Leírás                                                                                                              |
+|----|----------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| K6 | Átlátható, könnyen kezelhető felület   | A felületek könnyen használhatóak, átláthatóak legyenek, intuitívak, illetve ne legyenek zsúfoltak.                 |
+| K7 | Tervezési minták használata            | Az alkalmazás forráskódja tartalmazzon legalább 2 tervezési mintát. Mi esetünkben ez a Stratégia és a Command lesz. |
 
 ### Támogatott eszközök
+
+ * Bármely Java alkalmazás futtatásra képes eszköz. Például otthoni számítógép, laptop, tablet. Preferáltabb Windows alapú rendszer.
 
 ## 5. Funkcionális terv
 
