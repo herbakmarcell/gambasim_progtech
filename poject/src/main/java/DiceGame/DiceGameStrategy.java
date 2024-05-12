@@ -22,6 +22,7 @@ public class DiceGameStrategy {
         this.dp = diceGamePage;
     }
 
+
     public void setGameMode(GAME_MODE gameMode) {
         this.gameMode = gameMode;
         log.info(this.gameMode);
