@@ -3,16 +3,16 @@ package Start;
 import App.UserData;
 import Database.DatabaseConnection;
 import Database.LoginCommand;
+import Database.RegisterCommand;
 import SelectGame.SelectGamePage;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowEvent;
 
 public class StartPage {
-    private static Logger logger = Logger.getLogger("Login logger");
+    private static Logger logger = Logger.getLogger("StartPage logger");
     private DatabaseConnection db = new DatabaseConnection(
             "jdbc:mysql://localhost:3306/gambasim",
             "root",
@@ -25,6 +25,8 @@ public class StartPage {
     private JLabel usernameLabel;
     private JLabel passwordLabel;
     private JButton loginButton;
+    private JButton registerButton;
+    private JLabel registerLabel;
 
     public StartPage(){
         frame = CreateFrame();
@@ -58,6 +60,18 @@ public class StartPage {
                 }
             }
         });
+        registerButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                TryRegister();
+            }
+        });
+    }
+    private void TryRegister(){
+        String username = usernameField.getText();
+        String password = String.valueOf(passwordField.getPassword());
+        RegisterCommand register = new RegisterCommand(db,username,password);
+        register.execute();
     }
     private boolean TryLogin(){
         String username = usernameField.getText();
