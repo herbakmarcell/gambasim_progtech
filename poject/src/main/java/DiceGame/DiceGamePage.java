@@ -24,28 +24,22 @@ public class DiceGamePage{
     private JButton backBtn;
     private GAME_MODE currentMode;
     private DiceGameStrategy ds = new DiceGameStrategy(this);
-    private MoneyStrategy ms = new MoneyStrategy();
     public static Logger logger = Logger.getLogger("DiceGame logger");
 
     public void setResultLabelText(String text) {
         resultLabel.setText(text);
     }
-
     public JTextField getGuessField() {
         return guessField;
     }
-
+    public void setGuessField(int s) {guessField.setText(String.valueOf(s));}
     public void setDiceFaceLabelIcon(ImageIcon img) {
         this.diceFaceLabel.setIcon(img);
     }
     public void setDiceFaceLabelText(String text) {
         this.diceFaceLabel.setText(text);
     }
-
-    public int getMoneyField() {
-        return Integer.parseInt(moneyField.getText());
-    }
-
+    public int getMoneyField() {return Integer.parseInt(moneyField.getText());}
     private void refreshBalance(){
         balanceLabel.setText(String.valueOf(UserData.balance));
     }
@@ -116,6 +110,8 @@ public class DiceGamePage{
         });
 
     }
+
+
     class ItemChangeListener implements ItemListener {
         @Override
         public void itemStateChanged(ItemEvent event) {
