@@ -40,7 +40,7 @@ public class StartPage {
         frame.setContentPane(this.mainPanel);
         frame.pack();
         frame.setSize(300,300);
-        frame.setTitle("Gamba Szimulátor - Bejelentkezés");
+        frame.setTitle("Gamba Szimulátor");
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
